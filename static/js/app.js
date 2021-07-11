@@ -15,7 +15,8 @@ function init() {
             .text(function (d) { return d; })
             .attr("value", function (d) { return d; });
 
-        optionChanged();
+        optionChanged(names[0])
+
     })
 
 }
@@ -45,16 +46,47 @@ function getDemographics(id) {
 }
 
 function getSamples(id) {
-    d3.json("samples.json").then(function(data) {
-        console.log(data)
+    d3.json("samples.json").then(data => {
+        var samples = data.samples
+
+        // filter sample data for subject id
+        var subjectSamples = samples.filter(subject => {
+            return subject.id == id;
+        })[0];
+        console.log(subjectSamples);
+
+        var otuIds = subjectSamples.otu_ids;
+        console.log(otuIds);
+
+        var sampleValues = subjectSamples.sample_values.slice(0, 10).reverse();
+        console.log(sampleValues);
+
+        var otuLabels = otuIds.slice(0, 10).map(id => 'OTU ' + id);
+        console.log(otuLabels);
+
+         var trace = {
+             x: sampleValues,
+             y: otuLabels,
+             orientation: "h",
+             type: "bar"
+         };
+
+         var data = [trace];
+
+         var layout = {
+             title: "Top 10 Bacteria Culture Found",
+             yaxis: {
+                 type: "category"
+             }
+         }
+
+         Plotly.newPlot("bar", data, layout)
+
     })
 }
 
 
-function optionChanged() {
-
-    var dropDown = d3.select("#selDataset");
-    var subjectId = dropDown.property("value");
+function optionChanged(subjectId) {
 
     console.log(subjectId);
     getSamples(subjectId);
