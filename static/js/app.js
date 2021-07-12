@@ -120,7 +120,22 @@ function getSamples(id) {
          var subjectDemo = demographics.filter(subject => {
              return subject.id == id;
          })[0];
-         console.log(subjectDemo);
+
+         var washFrequency = subjectDemo.wfreq; 
+         console.log(washFrequency)
+
+         var trace3 = {
+             domain: { x: [0, 1], y: [0, 1]},
+             value: washFrequency,
+             title: "Scrubs per Week",
+             type: "indicator",
+             mode: "gauge+number"
+         };
+
+         var data3 = [trace3];
+         var layout3 = {title: "Belly  Button Washing Frequency"};
+
+         Plotly.newPlot("gauge", data3, layout3);
 
     })
 }
