@@ -113,6 +113,15 @@ function getSamples(id) {
 
          Plotly.newPlot("bubble", data2, layout2)
 
+         // Guage chart
+         // get washing frequency
+         var demographics = data.metadata
+
+         var subjectDemo = demographics.filter(subject => {
+             return subject.id == id;
+         })[0];
+         console.log(subjectDemo);
+
     })
 }
 
