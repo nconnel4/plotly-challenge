@@ -142,7 +142,13 @@ function getSamples(id) {
                      { range: [6, 7], color: "#487687" },
                      { range: [7, 8], color: "#396274" },
                      { range: [8, 9], color: "#294f61" },
-                 ]
+                 ],
+                 threshold: {
+                     value: washFrequency,
+                     line: {
+                         width: 10
+                     }
+                 }
              }
          };
 
