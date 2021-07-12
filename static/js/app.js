@@ -88,6 +88,31 @@ function getSamples(id) {
 
          Plotly.newPlot("bar", data1, layout1)
 
+         // generate bubble chart
+         var trace2 = {
+             x: otuIds,
+             y: sampleValues,
+             mode: "markers",
+             marker: {
+                 // scale size to better fit
+                 size: sampleValues.map(value => value * .7),
+                 color: otuIds
+             },
+             text: otuLabels
+         };
+
+         var data2 =[trace2];
+
+         var layout2 = {
+    
+             title: "Bacteria Cultures Per Sample",
+             xaxis: {
+                 title: "OTU ID"
+             }
+         };
+
+         Plotly.newPlot("bubble", data2, layout2)
+
     })
 }
 
