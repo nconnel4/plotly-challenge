@@ -134,19 +134,20 @@ function getSamples(id) {
                  axis: { range: [null, 9], tickmode: "linear"},
                  steps: [
                      { range: [0, 1], color: "#b4f6fd" },
-                     { range: [1, 2], color: "#a1dfe9" },
-                     { range: [2, 3], color: "#8ec9d5" },
-                     { range: [3, 4], color: "#7cb4c1" },
-                     { range: [4, 5], color: "#6a9eae" },
-                     { range: [5, 6], color: "#598a9a" },
-                     { range: [6, 7], color: "#487687" },
-                     { range: [7, 8], color: "#396274" },
-                     { range: [8, 9], color: "#294f61" },
+                     { range: [1, 2], color: "#a1e8f3" },
+                     { range: [2, 3], color: "#8ed9ea" },
+                     { range: [3, 4], color: "#7bcbe1" },
+                     { range: [4, 5], color: "#69bcd8" },
+                     { range: [5, 6], color: "#57aecf" },
+                     { range: [6, 7], color: "#46a0c6" },
+                     { range: [7, 8], color: "#3491bd" },
+                     { range: [8, 9], color: "#2283b4" },
                  ],
                  threshold: {
                      value: washFrequency,
                      line: {
-                         width: 10
+                         width: 5,
+                         color: "royalpurple"
                      }
                  }
              }
