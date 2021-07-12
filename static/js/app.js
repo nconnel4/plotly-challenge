@@ -57,30 +57,36 @@ function getSamples(id) {
 
         var otuIds = subjectSamples.otu_ids;
         console.log(otuIds);
-
-        var sampleValues = subjectSamples.sample_values.slice(0, 10).reverse();
+        var sampleValues = subjectSamples.sample_values;
         console.log(sampleValues);
+        
+        // generate to otu labels
+        var otuLabels = otuIds.map(id => 'OTU ' + id);
 
-        var otuLabels = otuIds.slice(0, 10).map(id => 'OTU ' + id);
-        console.log(otuLabels);
 
-         var trace = {
-             x: sampleValues,
-             y: otuLabels,
+        // get top 10 bacteria cultures
+        var top10Samples = sampleValues.slice(0, 10).reverse();
+        var topl10Labels = otuLabels.slice(0,10).reverse();
+ 
+
+        // generate bar chart
+         var trace1 = {
+             x: top10Samples,
+             y: topl10Labels,
              orientation: "h",
              type: "bar"
          };
 
-         var data = [trace];
+         var data1 = [trace1];
 
-         var layout = {
+         var layout1 = {
              title: "Top 10 Bacteria Culture Found",
              yaxis: {
                  type: "category"
              }
          }
 
-         Plotly.newPlot("bar", data, layout)
+         Plotly.newPlot("bar", data1, layout1)
 
     })
 }
