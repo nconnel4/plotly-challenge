@@ -127,9 +127,23 @@ function getSamples(id) {
          var trace3 = {
              domain: { x: [0, 1], y: [0, 1]},
              value: washFrequency,
-             title: "Scrubs per Week",
+             title: { text: "Scrubs per Week", font: {size: 17} },
              type: "indicator",
-             mode: "gauge+number"
+             mode: "gauge",
+             gauge: {
+                 axis: { range: [null, 9], tickmode: "linear"},
+                 steps: [
+                     { range: [0, 1], color: "#b4f6fd" },
+                     { range: [1, 2], color: "#a1dfe9" },
+                     { range: [2, 3], color: "#8ec9d5" },
+                     { range: [3, 4], color: "#7cb4c1" },
+                     { range: [4, 5], color: "#6a9eae" },
+                     { range: [5, 6], color: "#598a9a" },
+                     { range: [6, 7], color: "#487687" },
+                     { range: [7, 8], color: "#396274" },
+                     { range: [8, 9], color: "#294f61" },
+                 ]
+             }
          };
 
          var data3 = [trace3];
